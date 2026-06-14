@@ -40,27 +40,27 @@ A few patterns stood out before any modeling began:
 
 **Contract type is the strongest churn signal.** Month-to-month customers churn at **42.6%**, versus 11.3% for one-year and just **2.8%** for two-year contracts.
 
-![Contract Type vs Churn](images/cell16_img7.png)
+![Contract Type vs Churn](images/contract_vs_churn.png)
 
 **Tenure tells the same story from a different angle.** Customers who stayed have a median tenure of **38 months**; those who left had a median of just **10 months**.
 
-![Tenure vs Churn](images/cell13_img4.png)
+![Tenure vs Churn](images/tenure_vs_churn.png)
 
 **Payment method matters.** Electronic check users churn at **45.1%**, more than double the rate of automatic bank transfer (16.7%) or credit card (15.3%) users — convenience and automation correlate with retention.
 
-![Payment Method vs Churn](images/cell17_img8.png)
+![Payment Method vs Churn](images/payment_method_vs_churn.png)
 
 **Family status correlates with retention.** Customers without a partner churn far more (1,188 vs 669), and customers without dependents churn far more (1,531 vs 326).
 
-![Dependents vs Churn](images/cell12_img2.png)
+![Dependents vs Churn](images/dependents_vs_churn.png)
 
 **Gender showed no meaningful difference** in churn rate (934 vs 923 churned customers for female/male respectively), confirming it's a weak predictor on its own.
 
-![Gender vs Churn](images/cell11_img0.png)
+![Gender vs Churn](images/gender_vs_churn.png)
 
 **Class imbalance is the central challenge** this pipeline addresses — roughly 3 non-churners for every churner.
 
-![Churn Distribution](images/cell25_img10.png)
+![Churn Distribution](images/churn_distribution.png)
 
 ---
 
@@ -109,7 +109,7 @@ Logistic Regression, Decision Tree, Random Forest, Gradient Boosting, AdaBoost, 
 |---|---|---|---|---|---|---|
 | **SelectFpr (p-value)** | **MDO** | **CatBoost** | **0.8091** | 0.6773 | 0.5337 | 0.5968 |
 
-![Confusion Matrix - Best Pipeline](images/cell38_img11.png)
+![Confusion Matrix - Best Pipeline](images/best_pipeline_confusion_matrix.png)
 
 The top pipeline correctly identified **926 true negatives** and **212 true positives**, with 104 false positives and 160 false negatives — a solid balance for a dataset where the positive (churn) class is the minority.
 
@@ -128,25 +128,25 @@ Naive Bayes achieved very high recall (catching 92% of churners) but at the cost
 
 Ensemble methods clearly outperformed simpler models across the board:
 
-![Average Accuracy per Classifier](images/cell39_img21.png)
+![Average Accuracy per Classifier](images/avg_accuracy_per_classifier.png)
 
 ### Best Classifier per Feature Selection Method
 
 CatBoost was the dominant classifier across nearly every feature selector, peaking at 0.8091 with SelectFpr:
 
-![Best Classifier per Feature Selector](images/cell40_img22.png)
+![Best Classifier per Feature Selector](images/best_classifier_per_selector.png)
 
 ### Best Classifier per Oversampling Method
 
 MDO, V_SYNTH, and polynom_fit_SMOTE_star — all paired with CatBoost — led the oversampler rankings:
 
-![Best Classifier per Oversampler](images/cell41_img23.png)
+![Best Classifier per Oversampler](images/best_classifier_per_oversampler.png)
 
 ### Accuracy Heatmap — Oversampler × Classifier
 
 A full view of cross-validated mean accuracy across every oversampler/classifier pairing. Naive Bayes (dark column) consistently underperformed regardless of oversampler, while MDO, ROSE, PDFOS, V_SYNTH, and polynom_fit_SMOTE_star produced the strongest scores across most classifiers:
 
-![Accuracy Heatmap](images/cell43_img25.png)
+![Accuracy Heatmap](images/accuracy_heatmap_oversampler_classifier.png)
 
 ---
 
