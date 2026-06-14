@@ -1,0 +1,12 @@
+# Normalize line endings
+* text=auto eol=lf
+
+# Jupyter notebooks - treat as text but avoid noisy diffs on outputs
+*.ipynb text eol=lf
+
+# Binary files - do not modify line endings
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.csv binary
